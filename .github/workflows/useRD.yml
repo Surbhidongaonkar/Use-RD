@@ -8,7 +8,7 @@ jobs:
     steps:
       #- run: echo ${{ github.event.client_payload.ref }} 
       #- run: echo ${{ fromJson(github.event.client_payload.github) }} 
-      - run: echo ${{ github.event.client_payload.release.tarball_url }}
+      - run: echo ${{ github.event.client_payload.release }}
 
 
   
