@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ github.event.client_payload.ref }} 
-      - run: echo ${{ fromJson(github.event.client_payload.github) }} 
+      #- run: echo ${{ fromJson(github.event.client_payload.github) }} 
       - run: echo ${{ github.event.release }}
 
 
