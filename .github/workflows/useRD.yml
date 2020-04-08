@@ -13,5 +13,6 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     steps:        
+      - uses: actions/checkout@v2
       - name: Check for version file
         run: cat version.txt
