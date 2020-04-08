@@ -10,9 +10,13 @@ jobs:
         with:
           ref: ${{ github.event.client_payload.ref }}
       - run: echo ${{ github.event.client_payload.release }} > version.txt
+      - name: Check for version file
+        run: cat version.txt
+
   job2:
     runs-on: ubuntu-latest
+    needs: myEvent
     steps:        
       - uses: actions/checkout@v2
       - name: Check for version file
-        run: cat version.txt
+        run: echo "job2 runs"
