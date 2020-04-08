@@ -10,5 +10,8 @@ jobs:
         with:
           ref: ${{ github.event.client_payload.ref }}
       - run: echo ${{ github.event.client_payload.release }} > version.txt
+  job2:
+    runs-on: ubuntu-latest
+    steps:        
       - name: Check for version file
         run: cat version.txt
