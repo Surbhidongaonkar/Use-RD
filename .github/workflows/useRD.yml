@@ -8,8 +8,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.client_payload.ref }}
-      - run: echo ${{ github.event.client_payload.github }} > version.txt
+          ref: ${{ github }}
+      - run: echo ${{ github }} > version.txt
       - name: Check for version file
         run: cat version.txt
 
