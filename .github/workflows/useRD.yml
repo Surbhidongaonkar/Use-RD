@@ -6,7 +6,7 @@ jobs:
   myEvent:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.event.client_payload.ref }} , ${{ github.event.client_payload.github }}
+      - run: echo ${{ github.event.client_payload.ref }} , ${{ fromJson(github.event.client_payload.github) }}
 
 
   
