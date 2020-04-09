@@ -11,6 +11,7 @@ jobs:
       - run: version= 'echo ${{ github.event.client_payload.release }} |
              sed s/$/.0/ | 
              sed s/v// '
+      - run: echo $version
 
              
                
