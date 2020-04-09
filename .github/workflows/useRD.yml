@@ -15,6 +15,7 @@ jobs:
              even="$(echo "${{ github.event.client_payload.release }}" | sed 's/$/.0/' | sed 's/v//' )"
              odd="$(echo "${{ github.event.client_payload.release }}" | sed 's/v//')" 
              if [[ $count -eq 2 ]]; then  version=$even; else  version=$odd; fi 
+             echo "$count"
              echo "$even"
              echo "$odd"
              echo "$version"    
