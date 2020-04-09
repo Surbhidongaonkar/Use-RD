@@ -8,7 +8,7 @@ jobs:
     steps:
       #- run: echo ${{ github.event.client_payload.ref }} 
       #- run: echo ${{ fromJson(github.event.client_payload.github) }} 
-      - run: actions/checkout@v2
+      - uses: actions/checkout@v2
       - run: echo ${{ github.event.client_payload.release }} |
              sed s/$/.0/ | 
              sed s/v// > version.txt
