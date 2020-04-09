@@ -11,12 +11,7 @@ jobs:
       - run: echo ${{ github.event.client_payload.release }} |
              sed s/$/.0/ | 
              sed s/v// 
-      - run: echo "setting env"
-        env: echo ::set-env name=VERSION_STRING::$(echo ${{ github.event.client_payload.release }} |
-             sed s/$/.0/ | 
-             sed s/v//)
-      - name: check env version
-        run: echo env.VERSION_STRING
+
              
                
         
