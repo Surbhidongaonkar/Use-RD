@@ -10,7 +10,10 @@ jobs:
       #- run: echo ${{ fromJson(github.event.client_payload.github) }} 
       - run: echo ${{ github.event.client_payload.release }} |
              sed s/$/.0/ | 
-             sed s/v//
+             sed s/v// | echo ::set-env name=VERSION_STRING
+      - name: check env version
+        run: echo env.VERSION_STRING
+             
                
         
 
