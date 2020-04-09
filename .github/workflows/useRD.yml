@@ -9,11 +9,12 @@ jobs:
       #- run: echo ${{ github.event.client_payload.ref }} 
       #- run: echo ${{ fromJson(github.event.client_payload.github) }} 
       - name: check and format version string
-        if: echo "${{ github.event.client_payload.release }}" | awk -F"." '{print NF-1}' == 2
+        #if: echo "${{ github.event.client_payload.release }}" | awk -F"." '{print NF-1}'
         run: |
-             version="$(echo "${{ github.event.client_payload.release }}" \
-             | sed 's/$/.0/' \
-             | sed 's/v//' )" 
+             count=echo "${{ github.event.client_payload.release }}." | awk -F"." '{print NF-1}'
+             even="$(echo "${{ github.event.client_payload.release }}" | sed 's/$/.0/' | sed 's/v//' )"
+             odd="$(echo "${{ github.event.client_payload.release }}")" 
+             if [[ $count -eq 2 ]]; then  version=$even; else  version=$odd; fi     
              echo ::set-env name=VERSION_STRING::$version
       - name: check version
         run: echo $VERSION_STRING 
