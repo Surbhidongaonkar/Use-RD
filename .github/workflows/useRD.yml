@@ -13,7 +13,7 @@ jobs:
              version=$(echo ${{ github.event.client_payload.release }} | \
              sed s/$/.0/ | \
              sed s/v// ) 
-             echo ::set-env name=VERSION_STRING::version
+             echo ::set-env name=VERSION_STRING::$version
       - name: check version
         run: echo $VERSION_STRING 
 
