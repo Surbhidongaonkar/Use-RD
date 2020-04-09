@@ -10,8 +10,8 @@ jobs:
       #- run: echo ${{ fromJson(github.event.client_payload.github) }} 
       - uses: actions/checkout@v2
       - run: |
-             version= $(echo ${{ github.event.client_payload.release }} |
-             sed s/$/.0/ | 
+             version= $(echo ${{ github.event.client_payload.release }} | \
+             sed s/$/.0/ | \
              sed s/v// ) 
              echo ::set-env name=VERSION_STRING::version
       - name: check version
