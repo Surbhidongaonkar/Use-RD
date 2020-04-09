@@ -9,14 +9,13 @@ jobs:
       #- run: echo ${{ github.event.client_payload.ref }} 
       #- run: echo ${{ fromJson(github.event.client_payload.github) }} 
       - uses: actions/checkout@v2
-      - run: echo ${{ github.event.client_payload.release }} |
+      - run: |
+             version= $(echo ${{ github.event.client_payload.release }} |
              sed s/$/.0/ | 
-             sed s/v// > version.txt
-      - name: "Set version string"
-        run: echo version.txt
-      - run: echo ::set-env name=VERSION_STRING::$(cat version.txt)
+             sed s/v// ) 
+             echo ::set-env name=VERSION_STRING::version
       - name: check version
-        run: echo $env.VERSION_STRING
+        run: echo $VERSION_STRING 
 
              
                
