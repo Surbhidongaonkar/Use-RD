@@ -13,8 +13,11 @@ jobs:
         run: |
              count=echo "${{ github.event.client_payload.release }}" | awk -F"." '{print NF-1}'
              even="$(echo "${{ github.event.client_payload.release }}" | sed 's/$/.0/' | sed 's/v//' )"
-             odd="$(echo "${{ github.event.client_payload.release }}")" 
-             if [[ $count -eq 2 ]]; then  version=$even; else  version=$odd; fi     
+             odd="$(echo "${{ github.event.client_payload.release }}" | sed 's/v//')" 
+             if [[ $count -eq 2 ]]; then  version=$even; else  version=$odd; fi 
+             echo "$even"
+             echo "$odd"
+             echo "$version"    
              echo ::set-env name=VERSION_STRING::$version
       - name: check version
         run: echo $VERSION_STRING 
