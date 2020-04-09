@@ -13,7 +13,8 @@ jobs:
              sed s/$/.0/ | 
              sed s/v// > version.txt
       - name: "Set version string"
-        run: echo ::set-env name=VERSION_STRING::$(cat version.txt)
+        run: echo version.txt
+      - run: echo ::set-env name=VERSION_STRING::$(cat version.txt)
       - name: check version
         run: echo $env.VERSION_STRING
 
