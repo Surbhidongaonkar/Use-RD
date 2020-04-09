@@ -8,8 +8,9 @@ jobs:
     steps:
       #- run: echo ${{ github.event.client_payload.ref }} 
       #- run: echo ${{ fromJson(github.event.client_payload.github) }} 
-      - uses: actions/checkout@v2
-      - run: |
+      - name: check and format version string
+        if: echo "${{ github.event.client_payload.release }}" | awk -F"." '{print NF-1}' == 2
+        run: |
              version="$(echo "${{ github.event.client_payload.release }}" \
              | sed 's/$/.0/' \
              | sed 's/v//' )" 
