@@ -8,9 +8,9 @@ jobs:
     steps:
       #- run: echo ${{ github.event.client_payload.ref }} 
       #- run: echo ${{ fromJson(github.event.client_payload.github) }} 
-      - run: version= 'echo ${{ github.event.client_payload.release }} |
+      - run: version:echo ${{ github.event.client_payload.release }} |
              sed s/$/.0/ | 
-             sed s/v// '
+             sed s/v// 
       - run: echo $version
 
              
