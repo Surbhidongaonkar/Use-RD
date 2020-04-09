@@ -18,7 +18,7 @@ jobs:
              if [[ $count -eq 2 ]]; then 
                version_number="$(echo "$version_number" | sed 's/$/.0/')"
              fi
-             if [[ "$(echo "$version_number" | awk -F"." '{print NF-1}'" -ne 3 ]]; then
+             if [[ "$(echo "$version_number" | awk -F"." '{print NF-1}')" -ne 3 ]]; then
                echo "The tag '$client_payload'  is invalid" 1>&2
                exit 1
              fi
