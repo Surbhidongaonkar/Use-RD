@@ -1,5 +1,6 @@
 name: Repository Dispatch
 on:
+  push:
   repository_dispatch:
     types: update-on-release
 jobs:
@@ -10,7 +11,7 @@ jobs:
       #- run: echo ${{ github.event.client_payload.ref }} 
       #- run: echo ${{ fromJson(github.event.client_payload.github) }} 
       - name: check and format version string
-        #if: echo "${{ github.event.client_payload.release }}" | awk -F"." '{print NF-1}'
+        if: github.event_name == 'repository_dispatch'
         run: |
              client_payload="${{ github.event.client_payload.release }}"
              version_number="$(echo "$client_payload" | sed 's/v//')" 
@@ -22,9 +23,10 @@ jobs:
                echo "The tag '$client_payload'  is invalid" 1>&2
                exit 1
              fi
-             echo "::set-env name=VERSION_STRING::$version_number"              
-      - name: check version
-        run: echo $VERSION_STRING 
+             echo "::set-env name=VERSION_STRING::$version_number"     
+             echo "this is on repo-dispatch"         
+      - name: last step 
+        run: echo "last step" 
 
              
                
