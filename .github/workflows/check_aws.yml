@@ -1,8 +1,7 @@
 name: aws_env
 on:
   push:
-    paths:
-      'aws/**'
+   
 jobs:
   build:
     name: Build
@@ -17,7 +16,7 @@ jobs:
         
     - name: AWS CLI
       uses: aws-actions/configure-aws-credentials@v1
-      env:
+      with:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ${{ secrets.REGION }}
