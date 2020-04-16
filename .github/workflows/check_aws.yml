@@ -1,0 +1,22 @@
+name: aws_env
+on:
+  push:
+    path:
+      'aws/**'
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      AWS_REGION: ${{ secrets.REGION }}
+      VPC_ID: ${{ secrets.VPC_ID}}
+      AVAILABILITY_ZONES: ${{ secrets.AVAILABILITY_ZONES}}
+      SUBNET_IDS: ${{ secrets.SUBNET_IDS }} 
+    steps:
+    - name: checkpoint
+      run: |
+           echo "Checkpoint ok" 
+           echo "$VPC_ID"
+           echo "$AVAILABILITY_ZONES"
+ 
+    
