@@ -9,16 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     env:
       AWS_REGION: ${{ secrets.REGION }}
-      VPC_ID: ${{ secrets.VPC_ID}}
-      AVAILABILITY_ZONES: ${{ secrets.AVAILABILITY_ZONES}}
-      SUBNET_IDS: ${{ secrets.SUBNET_IDS }} 
+      
     steps:
     - name: checkpoint
       run: |
         echo "Checkpoint ok" 
         
     - name: AWS CLI
-      uses: actions/aws/cli@master
+      uses: aws-actions/configure-aws-credentials@v1
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
