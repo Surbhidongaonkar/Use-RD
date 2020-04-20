@@ -1,0 +1,17 @@
+name: use pr no
+on:
+  pull_request:
+jobs: 
+  job-1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Test
+      uses: actions/github-script@0.3.0
+      with:
+        github-token: ${{github.token}}
+        script: |
+          const core = require('@actions/core')
+          const prNumber = context.payload.number;
+          core.exportVariable('PULL_NUMBER', prNumber);
+    - name: Print
+      run: echo "$PULL_NUMBER"
