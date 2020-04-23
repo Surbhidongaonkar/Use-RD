@@ -1,0 +1,17 @@
+name: azure setup
+on: 
+  push:
+    paths:
+    - 'azure/**'
+jobs:
+  check-azure:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: last step
+      runs: echo "last step"
+    
