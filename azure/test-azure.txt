@@ -1,1 +1,2 @@
 Test azure login
+test
